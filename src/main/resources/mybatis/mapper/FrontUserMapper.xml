@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiurong.scrum.security.FrontUserMapper">
+	<resultMap type="com.jiurong.scrum.security.FrontUser" id="FrontUser">
+		<id property="id" column="id"/>
+	</resultMap>
+	
+	<select id="findByUsername" resultMap="FrontUser">
+		select * from user
+		where username = #{username}
+	</select>
+	
+	<update id="updateNickname">
+		update user
+		set nickname = #{nickname}
+		where id = #{id}
+	</update>
+	
+	<update id="updatePassword">
+		update user
+		set password = #{password}
+		where id = #{id}
+	</update>
+</mapper>

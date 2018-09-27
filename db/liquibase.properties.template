@@ -1,0 +1,8 @@
+# 将此配置文件的.templage去掉，填写本机的url，username和password，注意?useUnicode=true&characterEncoding=UTF-8必须加以确保编码正确
+driver: com.mysql.jdbc.Driver
+classpath: mysql-connector.jar
+url: jdbc:mysql://115.159.37.114:3306/gycrmdb?useUnicode=true&characterEncoding=utf-8
+username: root
+password: Gaoyi001
+logLevel: severe
+changeLogFile: main-changelog.xml

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="warn">
+
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+            <PatternLayout
+                pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %m%n" />
+        </Console>
+
+        <RollingFile name="rollingfile" fileName="logs/error.log"
+            filePattern="logs/file-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %m%n
+                </pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy />
+        </RollingFile>
+        
+        <RollingFile name="devfile" fileName="logs/debug.log"
+            filePattern="logs/debug-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %m%n
+                </pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy />
+        </RollingFile>
+	</Appenders>
+
+	<Loggers>	
+		<Root level="ALL">
+            <appender-ref ref="console" level="debug"/>
+            <appender-ref ref="devfile" level="info"/>
+        </Root>	
+		<Logger name="org.springframework" level="error" additiv0ity="true">
+			<appender-ref ref="rollingfile" />
+		</Logger>
+		
+		<Logger name="org.mybatis" level="error" additivity="true">
+			<appender-ref ref="rollingfile" />
+		</Logger>
+		
+		<Logger name="com.jiurong" level="error" additivity="true">
+			<appender-ref ref="rollingfile" />
+		</Logger>
+	</Loggers>
+</Configuration>
