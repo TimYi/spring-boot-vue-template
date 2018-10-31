@@ -1,5 +1,6 @@
 // import { Notification } from 'element-ui'
 import { login, loadUser, logout, editUser, changePassword } from '../service/user'
+import router from '../router/router'
 
 const store = {
   state: {
@@ -31,6 +32,7 @@ const store = {
     async logout ({ commit }) {
       await logout()
       commit('clear')
+      router.push('/login')
     },
     async editUser ({ commit }, { field, value }) {
       await editUser({ field, value })

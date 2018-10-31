@@ -1,6 +1,8 @@
 import Vue from 'vue'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import 'font-awesome/css/font-awesome.min.css'
 import App from './App.vue'
 import router from './router/router'
 import store from './store'
@@ -9,7 +11,9 @@ import { registLoginTimeoutErrorHandler, registRequestErrorHandler } from './ser
 
 Vue.config.productionTip = false
 
-Vue.use(ElementUI)
+Vue.use(Vuetify, {
+  iconfont: 'fa4'
+})
 
 registRequestErrorHandler()
 

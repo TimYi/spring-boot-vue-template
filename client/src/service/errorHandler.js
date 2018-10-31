@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import { Message, Loading } from 'element-ui'
 import { registErrorHandler } from './request'
+import store from '../store'
 
 export function registLoginTimeoutErrorHandler ({ store, router }) {
   registErrorHandler({ id: 'loginTimeOut',
@@ -18,20 +18,17 @@ export function registRequestErrorHandler () {
   Vue.mixin({
     methods: {
       async catchError (asyncFunc) {
-        const loading = Loading.service()
+        store.commit('load', true)
         try {
           return await asyncFunc()
         } catch (err) {
           if (!err.handled) {
-            Message.error({
-              showClose: true,
-              message: '错了哦，这是一条错误消息'
-            })
+            store.dispatch('error', err.message)
             err.handled = true
           }
           throw err
         } finally {
-          loading.close()
+          store.commit('load', false)
         }
       }
     }
