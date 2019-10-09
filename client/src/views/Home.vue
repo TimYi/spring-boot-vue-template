@@ -1,12 +1,14 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-  </div>
+  <HelloWorld />
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
+import HelloWorld from '../components/HelloWorld.vue'
 
-export default {
-  name: 'home'
-}
+export default Vue.extend({
+  components: {
+    HelloWorld
+  }
+})
 </script>
